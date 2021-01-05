@@ -3,8 +3,10 @@ import Professor.*;
 import ScriptHandler.ScriptHandler;
 import Student.*;
 import Staff.*;
+import Graduate.*;
 
 import java.io.IOException;
+
 
 public class Main {
 	public static void main(String[] args) {
@@ -25,11 +27,17 @@ public class Main {
 		StaffList staffList = new StaffList();
 		StaffIOHandler staffIOH = new StaffIOHandler();
 		StaffController staffController = new StaffController();
+		
+		Graduate graduate = new Graduate();
+		GraduateList graduateList = new GraduateList();
+		GraduateIOHandler graduateIOH = new GraduateIOHandler();
+		GraduateController graduateController = new GraduateController();
 
 		try {
 			studentIOH.loadStudent(studentList, "/Users/suhalee/Desktop/student.txt");
 			professorIOH.loadProfessor(professorList, "/Users/suhalee/Desktop/professor.txt");
 			staffIOH.loadStaff(staffList, "/Users/suhalee/Desktop/staff.txt");
+			graduateIOH.loadGraduate(graduateList, "/Users/suhalee/Desktop/graduate.txt");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -39,8 +47,8 @@ public class Main {
 			int menu = 0;
 
 			System.out.println(" 학교관리 시스템 메뉴 ");
-			System.out.println("1. 학생 정보 ");
-			System.out.println("2. 대학생 정보 ");
+			System.out.println("1. 대학생 정보 ");
+			System.out.println("2. 대학원생 정보 ");
 			System.out.println("3. 교수 정보 ");
 			System.out.println("4. 교직원 정보 ");
 			System.out.println("5. 종료");
@@ -74,6 +82,51 @@ public class Main {
 						if (dialog == true) {
 							try {
 								studentIOH.saveStudent(studentList, "/Users/suhalee/Desktop/student.txt");
+							} catch (IOException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+							System.exit(1);
+						} else if (dialog == false) {
+							continue;
+						} else {
+							continue;
+						}
+					default:
+						System.out.println("프로그램을 종료하시겠습니까 ? ");
+						// 종료 함수
+						break;
+					}
+
+				}
+			}
+			if (menu == 2) {
+				while (true) {
+					int graduateMenu = graduateIOH.getGraduateMenu();
+
+					switch (graduateMenu) {
+					case 1:
+						graduateController.registerGraduate(graduate, graduateIOH, graduateList);;
+						// 등록 함수
+						break;
+					case 2:
+						graduateController.changeGraduate(graduate, graduateIOH, graduateList);
+						// 수정 함수
+						break;
+					case 3:
+						graduateController.removeGraduate(graduate, graduateIOH, graduateList);
+						// 삭제 함수
+						break;
+					case 4:
+						graduateController.selectGraduate(graduateList, graduateIOH);
+						// 조회 함수
+						break;
+					case 5:
+						boolean dialog = graduateIOH.getExitDialogMenu();
+
+						if (dialog == true) {
+							try {
+								graduateIOH.saveGraduate(graduateList, "/Users/suhalee/Desktop/graduate.txt");
 							} catch (IOException e) {
 								// TODO Auto-generated catch block
 								e.printStackTrace();

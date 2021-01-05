@@ -1,5 +1,8 @@
 package Graduate;
 
+import Student.StudentIOHandler;
+import Student.StudentList;
+
 public class GraduateController {
 	public void registerGraduate(Graduate graduate, GraduateIOHandler graduateIOH, GraduateList graduateList) {
 		// 대학원생 등록
@@ -27,6 +30,19 @@ public class GraduateController {
 		
 		int index = graduateList.findGraduate(id);
 		graduate = graduateIOH.getGraduate();
+		
 		graduateList.updateGraduate(graduate, index);
+	}
+	
+	public void removeGraduate(Graduate graduate, GraduateIOHandler graduateIOH, GraduateList graduateList) {
+		int id= graduateIOH.getId();
+		
+		int index = graduateList.findGraduate(id);
+		
+		graduateList.deleteGraduate(index);
+	}
+	
+	public void selectGraduate(GraduateList graduateList, GraduateIOHandler graduateIOH) {
+		graduateIOH.putGraduate(graduateList);
 	}
 }

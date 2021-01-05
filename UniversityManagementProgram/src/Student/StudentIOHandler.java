@@ -30,10 +30,10 @@ public class StudentIOHandler {
 		int menu = 0;
 
 		System.out.println("메뉴 선택");
-		System.out.println("1. 학생 등록");
-		System.out.println("2. 학생 수정");
-		System.out.println("3. 학생 삭제");
-		System.out.println("4. 학생 조회");
+		System.out.println("1. 대학생 등록");
+		System.out.println("2. 대학생 수정");
+		System.out.println("3. 대학생 삭제");
+		System.out.println("4. 대학생 조회");
 		System.out.println("5. 종료");
 
 		menu = scriptHandler.getInteger("");

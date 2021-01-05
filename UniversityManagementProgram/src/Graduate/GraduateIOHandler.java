@@ -76,7 +76,7 @@ public class GraduateIOHandler {
 		return id;
 	}
 	
-	public void putGradute(GraduateList graduateList) {
+	public void putGraduate(GraduateList graduateList) {
 		System.out.println("id" + "\t" + "name" + "\t" + "age" + "\t" + "major" + "lab");
 		for(int i = 0; i < graduateList.getCount(); i++) {
 			System.out.println(graduateList.getGraduateList(i).getId() + "\t" + graduateList.getGraduateList(i).getName() + "\t" 
