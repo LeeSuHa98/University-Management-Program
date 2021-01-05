@@ -2,6 +2,7 @@
 import Professor.*;
 import ScriptHandler.ScriptHandler;
 import Student.*;
+import Staff.*;
 
 import java.io.IOException;
 
@@ -19,10 +20,16 @@ public class Main {
 		ProfessorList professorList = new ProfessorList();
 		ProfessorIOHandler professorIOH = new ProfessorIOHandler();
 		ProfessorController professorController = new ProfessorController();
+		
+		Staff staff = new Staff();
+		StaffList staffList = new StaffList();
+		StaffIOHandler staffIOH = new StaffIOHandler();
+		StaffController staffController = new StaffController();
 
 		try {
 			studentIOH.loadStudent(studentList, "/Users/suhalee/Desktop/student.txt");
 			professorIOH.loadProfessor(professorList, "/Users/suhalee/Desktop/professor.txt");
+			staffIOH.loadStaff(staffList, "/Users/suhalee/Desktop/staff.txt");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -33,8 +40,8 @@ public class Main {
 
 			System.out.println(" 학교관리 시스템 메뉴 ");
 			System.out.println("1. 학생 정보 ");
-			System.out.println("2. 교수 정보 ");
-			System.out.println("3. 대학생 정보 ");
+			System.out.println("2. 대학생 정보 ");
+			System.out.println("3. 교수 정보 ");
 			System.out.println("4. 교직원 정보 ");
 			System.out.println("5. 종료");
 
@@ -85,7 +92,7 @@ public class Main {
 
 				}
 			}
-			if (menu == 2) {
+			if (menu == 3) {
 				while (true) {
 					int professorMenu = professorIOH.getProfessorMenu();
 
@@ -129,6 +136,46 @@ public class Main {
 					}
 				}
 
+			}
+			if(menu == 4) {
+				while(true) {
+					int staffMenu = staffIOH.getStaffMenu();
+					
+					switch(staffMenu){
+					case 1:
+						staffController.registerStaff(staff, staffIOH, staffList);
+						break;
+					case 2:
+						staffController.changeStaff(staff, staffIOH, staffList);
+						break;
+					case 3:
+						staffController.removeStaff(staff, staffIOH, staffList);
+						break;
+					case 4:
+						staffController.selectStaff(staffIOH, staffList);
+						break;
+					case 5:
+						boolean dialog = staffIOH.getExitDialogMenu();
+
+						if (dialog == true) {
+							try {
+								staffIOH.saveStaff(staffList, "/Users/suhalee/Desktop/staff.txt");
+							} catch (IOException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+							System.exit(1);
+						} else if (dialog == false) {
+							continue;
+						} else {
+							continue;
+						}
+					default:
+						System.out.println("프로그램을 종료하시겠습니까 ? ");
+						// 종료 함수
+						break;
+					}
+				}
 			}
 			if (menu < 0 || menu > 5) {
 				System.out.println("잘못선택함");

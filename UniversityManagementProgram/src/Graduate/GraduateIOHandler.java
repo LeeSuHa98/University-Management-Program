@@ -1,4 +1,4 @@
-package Student;
+package Graduate;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -7,40 +7,40 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.util.Scanner;
-import java.util.InputMismatchException;
 
-import ScriptHandler.*;
+import ScriptHandler.ScriptHandler;
+import Student.Student;
+import Student.StudentList;
 
-public class StudentIOHandler {
+public class GraduateIOHandler {
 	ScriptHandler scriptHandler = new ScriptHandler();
 	
-	public Student getStudent() {
+	public Graduate getGraduate() {
 		int id = scriptHandler.getInteger("id : ");
 		String name = scriptHandler.getString("name : ");
 		int age = scriptHandler.getInteger("age : ");
 		String major = scriptHandler.getString("major : ");
- 
-		Student student = new Student(id, name, age, major);
-
-		return student;
+		String lab = scriptHandler.getString("lab : ");
+		
+		Graduate graduate = new Graduate(id, name, age, major, lab);
+		
+		return graduate;
 	}
-
-	public int getStudentMenu() {
+	
+	public int getGraduateMenu() {
 		int menu = 0;
 
 		System.out.println("메뉴 선택");
-		System.out.println("1. 학생 등록");
-		System.out.println("2. 학생 수정");
-		System.out.println("3. 학생 삭제");
-		System.out.println("4. 학생 조회");
+		System.out.println("1. 대학원생 등록");
+		System.out.println("2. 대학원생 수정");
+		System.out.println("3. 대학원생 삭제");
+		System.out.println("4. 대학원생 조회");
 		System.out.println("5. 종료");
 
 		menu = scriptHandler.getInteger("");
 
 		return menu;
 	}
-
 	public boolean getExitDialogMenu() {
 
 		String answer = scriptHandler.getString("프로그램을 종료 하시겠습니까(y/n)?");
@@ -75,18 +75,17 @@ public class StudentIOHandler {
 
 		return id;
 	}
-
-	// 학생 값 넘기기
-	public void putStudent(StudentList studentList) {
-		System.out.println("id" + "\t" + "name" + "\t" + "age" + "\t" + "major");
-		for (int i = 0; i < studentList.getCount(); i++) {
-			System.out.println(studentList.getStudentList(i).getId() + "\t" + studentList.getStudentList(i).getName()
-					+ "\t" + studentList.getStudentList(i).getAge() + "\t" + studentList.getStudentList(i).getMajor());
+	
+	public void putGradute(GraduateList graduateList) {
+		System.out.println("id" + "\t" + "name" + "\t" + "age" + "\t" + "major" + "lab");
+		for(int i = 0; i < graduateList.getCount(); i++) {
+			System.out.println(graduateList.getGraduateList(i).getId() + "\t" + graduateList.getGraduateList(i).getName() + "\t" 
+		+ graduateList.getGraduateList(i).getAge() + "\t" + graduateList.getGraduateList(i).getMajor() + "\t" + graduateList.getGraduateList(i).getLab());
 		}
 	}
 
 	// 파일 출력
-	public void loadStudent(StudentList studentList, String fileName) throws IOException {
+	public void loadGraduate(GraduateList graduateList, String fileName) throws IOException {
 
 		FileInputStream fin = new FileInputStream(fileName);
 
@@ -103,26 +102,28 @@ public class StudentIOHandler {
 			String name = item[1];
 			int age = Integer.parseInt(item[2]);
 			String major = item[3];
+			String lab = item[4];
 
-			Student student = new Student(id, name, age, major);
-
-			studentList.insertStudent(student);
+			Graduate graduate = new Graduate(id, name, age, major, lab);
+			
+			graduateList.insertGraduate(graduate);
 		}
 		br.close();
 	}
 
 	// 파일 출력
 	// iohandler
-	public void saveStudent(StudentList studentList, String filename) throws IOException {
+	public void saveGraduate(GraduateList graduateList, String filename) throws IOException {
 
 		FileOutputStream fout = new FileOutputStream(filename);
 		BufferedWriter br = new BufferedWriter(new OutputStreamWriter(fout));
 
-		for (int i = 0; i < studentList.getCount(); i++) {
-			br.write(studentList.getStudentList(i).getId() + "\t");
-			br.write(studentList.getStudentList(i).getName() + "\t");
-			br.write(studentList.getStudentList(i).getAge() + "\t");
-			br.write(studentList.getStudentList(i).getMajor() + "\t");
+		for (int i = 0; i < graduateList.getCount(); i++) {
+			br.write(graduateList.getGraduateList(i).getId() + "\t");
+			br.write(graduateList.getGraduateList(i).getName() + "\t");
+			br.write(graduateList.getGraduateList(i).getAge() + "\t");
+			br.write(graduateList.getGraduateList(i).getMajor() + "\t");
+			br.write(graduateList.getGraduateList(i).getLab() + "\t");
 			br.newLine();
 		}
 		br.close();

@@ -11,7 +11,6 @@ import java.util.Scanner;
 
 public class StudentList {
 	final int MAX_STUDENT = 10000;
-	Scanner sc = new Scanner(System.in);
 
 	private Student[] studentList = new Student[MAX_STUDENT];
 	private int count;

@@ -17,7 +17,7 @@ public class Professor {
 		this.lab = lab;
 	}
 	
-	// 값을 가져오 getter
+	// 값을 가져오는 getter
 	
 	public int getId() {
 		return this.id;
