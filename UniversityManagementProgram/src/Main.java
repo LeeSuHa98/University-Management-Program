@@ -7,6 +7,8 @@ import Graduate.*;
 
 import java.io.IOException;
 
+import FileHandler.FileHandler;
+
 
 public class Main {
 	public static void main(String[] args) {
@@ -32,12 +34,14 @@ public class Main {
 		GraduateList graduateList = new GraduateList();
 		GraduateIOHandler graduateIOH = new GraduateIOHandler();
 		GraduateController graduateController = new GraduateController();
-
+		
+		FileHandler file = new FileHandler();
+		
 		try {
-			studentIOH.loadStudent(studentList, "/Users/suhalee/Desktop/student.txt");
-			professorIOH.loadProfessor(professorList, "/Users/suhalee/Desktop/professor.txt");
-			staffIOH.loadStaff(staffList, "/Users/suhalee/Desktop/staff.txt");
-			graduateIOH.loadGraduate(graduateList, "/Users/suhalee/Desktop/graduate.txt");
+			file.loadStudent(studentList, "/Users/suhalee/Desktop/student.txt");
+			file.loadGraduate(graduateList, "/Users/suhalee/Desktop/professor.txt");
+			file.loadStaff(staffList, "/Users/suhalee/Desktop/staff.txt");
+			file.loadGraduate(graduateList, "/Users/suhalee/Desktop/graduate.txt");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -81,7 +85,7 @@ public class Main {
 
 						if (dialog == true) {
 							try {
-								studentIOH.saveStudent(studentList, "/Users/suhalee/Desktop/student.txt");
+								file.saveStudent(studentList, "/Users/suhalee/Desktop/student.txt");
 							} catch (IOException e) {
 								// TODO Auto-generated catch block
 								e.printStackTrace();
@@ -126,7 +130,7 @@ public class Main {
 
 						if (dialog == true) {
 							try {
-								graduateIOH.saveGraduate(graduateList, "/Users/suhalee/Desktop/graduate.txt");
+								file.saveGraduate(graduateList, "/Users/suhalee/Desktop/graduate.txt");
 							} catch (IOException e) {
 								// TODO Auto-generated catch block
 								e.printStackTrace();
@@ -171,7 +175,7 @@ public class Main {
 
 						if (dialog == true) {
 							try {
-								professorIOH.saveProfessor(professorList, "/Users/suhalee/Desktop/professor.txt");
+								file.saveProfessor(professorList, "/Users/suhalee/Desktop/professor.txt");
 							} catch (IOException e) {
 								// TODO Auto-generated catch block
 								e.printStackTrace();
@@ -212,7 +216,7 @@ public class Main {
 
 						if (dialog == true) {
 							try {
-								staffIOH.saveStaff(staffList, "/Users/suhalee/Desktop/staff.txt");
+								file.saveStaff(staffList, "/Users/suhalee/Desktop/staff.txt");
 							} catch (IOException e) {
 								// TODO Auto-generated catch block
 								e.printStackTrace();

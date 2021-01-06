@@ -83,49 +83,4 @@ public class GraduateIOHandler {
 		+ graduateList.getGraduateList(i).getAge() + "\t" + graduateList.getGraduateList(i).getMajor() + "\t" + graduateList.getGraduateList(i).getLab());
 		}
 	}
-
-	// 파일 출력
-	public void loadGraduate(GraduateList graduateList, String fileName) throws IOException {
-
-		FileInputStream fin = new FileInputStream(fileName);
-
-		BufferedReader br = new BufferedReader(new InputStreamReader(fin));
-
-		String patchLine;
-		String seperator = "\t";
-
-		while ((patchLine = br.readLine()) != null) {
-
-			String[] item = patchLine.split(seperator);
-
-			int id = Integer.parseInt(item[0]);
-			String name = item[1];
-			int age = Integer.parseInt(item[2]);
-			String major = item[3];
-			String lab = item[4];
-
-			Graduate graduate = new Graduate(id, name, age, major, lab);
-			
-			graduateList.insertGraduate(graduate);
-		}
-		br.close();
-	}
-
-	// 파일 출력
-	// iohandler
-	public void saveGraduate(GraduateList graduateList, String filename) throws IOException {
-
-		FileOutputStream fout = new FileOutputStream(filename);
-		BufferedWriter br = new BufferedWriter(new OutputStreamWriter(fout));
-
-		for (int i = 0; i < graduateList.getCount(); i++) {
-			br.write(graduateList.getGraduateList(i).getId() + "\t");
-			br.write(graduateList.getGraduateList(i).getName() + "\t");
-			br.write(graduateList.getGraduateList(i).getAge() + "\t");
-			br.write(graduateList.getGraduateList(i).getMajor() + "\t");
-			br.write(graduateList.getGraduateList(i).getLab() + "\t");
-			br.newLine();
-		}
-		br.close();
-	}
 }

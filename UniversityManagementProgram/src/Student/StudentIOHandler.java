@@ -84,47 +84,4 @@ public class StudentIOHandler {
 					+ "\t" + studentList.getStudentList(i).getAge() + "\t" + studentList.getStudentList(i).getMajor());
 		}
 	}
-
-	// 파일 출력
-	public void loadStudent(StudentList studentList, String fileName) throws IOException {
-
-		FileInputStream fin = new FileInputStream(fileName);
-
-		BufferedReader br = new BufferedReader(new InputStreamReader(fin));
-
-		String patchLine;
-		String seperator = "\t";
-
-		while ((patchLine = br.readLine()) != null) {
-
-			String[] item = patchLine.split(seperator);
-
-			int id = Integer.parseInt(item[0]);
-			String name = item[1];
-			int age = Integer.parseInt(item[2]);
-			String major = item[3];
-
-			Student student = new Student(id, name, age, major);
-
-			studentList.insertStudent(student);
-		}
-		br.close();
-	}
-
-	// 파일 출력
-	// iohandler
-	public void saveStudent(StudentList studentList, String filename) throws IOException {
-
-		FileOutputStream fout = new FileOutputStream(filename);
-		BufferedWriter br = new BufferedWriter(new OutputStreamWriter(fout));
-
-		for (int i = 0; i < studentList.getCount(); i++) {
-			br.write(studentList.getStudentList(i).getId() + "\t");
-			br.write(studentList.getStudentList(i).getName() + "\t");
-			br.write(studentList.getStudentList(i).getAge() + "\t");
-			br.write(studentList.getStudentList(i).getMajor() + "\t");
-			br.newLine();
-		}
-		br.close();
-	}
 }

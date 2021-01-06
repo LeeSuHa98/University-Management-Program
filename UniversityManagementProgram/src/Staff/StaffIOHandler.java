@@ -82,47 +82,4 @@ public class StaffIOHandler {
 					staffList.getStaffList(i).getContactNum()+ "\t" + "\t" + staffList.getStaffList(i).getDepartment());
 		}
 	}
-	
-	// 파일 출력
-		public void loadStaff(StaffList staffList, String fileName) throws IOException {
-
-			FileInputStream fin = new FileInputStream(fileName);
-
-			BufferedReader br = new BufferedReader(new InputStreamReader(fin));
-
-			String patchLine;
-			String seperator = "\t";
-
-			while ((patchLine = br.readLine()) != null) {
-
-				String[] item = patchLine.split(seperator);
-
-				int id = Integer.parseInt(item[0]);
-				String name = item[1];
-				String contactNum = item[2];
-				String department = item[3];
-				
-				Staff staff = new Staff(id, name, contactNum, department);
-
-				staffList.insertStaff(staff);
-			}
-			br.close();
-		}
-
-		// 파일 출력
-		// iohandler
-		public void saveStaff(StaffList staffList,  String filename) throws IOException {
-
-			FileOutputStream fout = new FileOutputStream(filename);
-			BufferedWriter br = new BufferedWriter(new OutputStreamWriter(fout));
-
-			for (int i = 0; i < staffList.getCount(); i++) {
-				br.write(staffList.getStaffList(i).getId() + "\t");
-				br.write(staffList.getStaffList(i).getName() + "\t");
-				br.write(staffList.getStaffList(i).getContactNum() + "\t");
-				br.write(staffList.getStaffList(i).getDepartment() + "\t");
-				br.newLine();
-			}
-			br.close();
-		}
 }

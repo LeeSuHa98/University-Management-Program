@@ -83,49 +83,4 @@ public class ProfessorIOHandler {
 					+ "\t" + "\t" + professorList.getProfessorList(i).getMajor() + "\t" + professorList.getProfessorList(i).getLab());
 		}
 	}
-	
-	// 파일 출력
-		public void loadProfessor(ProfessorList professorList, String fileName) throws IOException {
-
-			FileInputStream fin = new FileInputStream(fileName);
-
-			BufferedReader br = new BufferedReader(new InputStreamReader(fin));
-
-			String patchLine;
-			String seperator = "\t";
-
-			while ((patchLine = br.readLine()) != null) {
-
-				String[] item = patchLine.split(seperator);
-
-				int id = Integer.parseInt(item[0]);
-				String name = item[1];
-				String contactNum = item[2];
-				String major = item[3];
-				String lab = item[4];
-				
-				Professor professor = new Professor(id, name, contactNum, major, lab);
-
-				professorList.insertProfessor(professor);
-			}
-			br.close();
-		}
-
-		// 파일 출력
-		// iohandler
-		public void saveProfessor(ProfessorList professorList, String filename) throws IOException {
-
-			FileOutputStream fout = new FileOutputStream(filename);
-			BufferedWriter br = new BufferedWriter(new OutputStreamWriter(fout));
-
-			for (int i = 0; i < professorList.getCount(); i++) {
-				br.write(professorList.getProfessorList(i).getId() + "\t");
-				br.write(professorList.getProfessorList(i).getName() + "\t");
-				br.write(professorList.getProfessorList(i).getContactNum() + "\t");
-				br.write(professorList.getProfessorList(i).getMajor() + "\t");
-				br.write(professorList.getProfessorList(i).getLab() + "\t");
-				br.newLine();
-			}
-			br.close();
-		}
  }
