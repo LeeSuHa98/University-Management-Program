@@ -1,22 +1,22 @@
 package Graduate;
 
 public class Graduate {
-	private int id;
+    private int id;
 	private String name;
 	private int age;
 	private String major;
-	private String lab;
+	private int labCode;
 	
 	public Graduate() {
 		
 	}
 	
-	public Graduate(int id, String name, int age, String major, String lab) {
+	public Graduate(int id, String name, int age, String major, int labCode) {
 		this.id = id;
 		this.name = name;
 		this.age = age;
 		this.major = major;
-		this.lab = lab;
+		this.labCode = labCode;
 	}
 	
 	public int getId() {
@@ -43,12 +43,10 @@ public class Graduate {
 	public void setMajor(String major) {
 		this.major = major;
 	}
-	public String getLab() {
-		return lab;
+	public int getLabCode() {
+		return labCode;
 	}
-	public void setLab(String lab) {
-		this.lab = lab;
+	public void setLab(int labCode) {
+		this.labCode = labCode;
 	}
-	
-	
 }

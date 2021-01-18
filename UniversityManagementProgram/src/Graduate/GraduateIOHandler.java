@@ -1,16 +1,6 @@
 package Graduate;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-
 import ScriptHandler.ScriptHandler;
-import Student.Student;
-import Student.StudentList;
 
 public class GraduateIOHandler {
 	ScriptHandler scriptHandler = new ScriptHandler();
@@ -20,9 +10,9 @@ public class GraduateIOHandler {
 		String name = scriptHandler.getString("name : ");
 		int age = scriptHandler.getInteger("age : ");
 		String major = scriptHandler.getString("major : ");
-		String lab = scriptHandler.getString("lab : ");
+		int labCode = scriptHandler.getInteger("lab code : ");
 		
-		Graduate graduate = new Graduate(id, name, age, major, lab);
+		Graduate graduate = new Graduate(id, name, age, major, labCode);
 		
 		return graduate;
 	}
@@ -77,10 +67,10 @@ public class GraduateIOHandler {
 	}
 	
 	public void putGraduate(GraduateList graduateList) {
-		System.out.println("id" + "\t" + "name" + "\t" + "age" + "\t" + "major" + "lab");
+		System.out.println("id" + "\t" + "name" + "\t" + "age" + "\t" + "major" + "\t" + "lab code");
 		for(int i = 0; i < graduateList.getCount(); i++) {
 			System.out.println(graduateList.getGraduateList(i).getId() + "\t" + graduateList.getGraduateList(i).getName() + "\t" 
-		+ graduateList.getGraduateList(i).getAge() + "\t" + graduateList.getGraduateList(i).getMajor() + "\t" + graduateList.getGraduateList(i).getLab());
+		+ graduateList.getGraduateList(i).getAge() + "\t" + graduateList.getGraduateList(i).getMajor() + "\t" + graduateList.getGraduateList(i).getLabCode());
 		}
 	}
 }

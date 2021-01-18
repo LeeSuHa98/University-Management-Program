@@ -1,5 +1,4 @@
 package Professor;
-import ScriptHandler.*;
 
 public class ProfessorController {
 	public void registerProfessor(Professor professor, ProfessorIOHandler ioh, ProfessorList professorList) {

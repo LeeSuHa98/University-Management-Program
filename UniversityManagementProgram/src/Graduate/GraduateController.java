@@ -1,8 +1,5 @@
 package Graduate;
 
-import Student.StudentIOHandler;
-import Student.StudentList;
-
 public class GraduateController {
 	public void registerGraduate(Graduate graduate, GraduateIOHandler graduateIOH, GraduateList graduateList) {
 		// 대학원생 등록

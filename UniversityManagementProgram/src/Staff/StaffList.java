@@ -24,7 +24,6 @@ public class StaffList {
 			if(id == staffList[i].getId()) {
 				return i;
 			}
-			
 		}
 		return 0;
 	}

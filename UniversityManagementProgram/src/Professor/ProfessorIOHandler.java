@@ -1,16 +1,6 @@
 package Professor;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-
 import ScriptHandler.ScriptHandler;
-import Student.Student;
-import Student.StudentList;
 
 public class ProfessorIOHandler {
 	ScriptHandler scriptHandler = new ScriptHandler();
@@ -20,9 +10,9 @@ public class ProfessorIOHandler {
 		String name = scriptHandler.getString("name : ");
 		String contactNum = scriptHandler.getString("contact number : ");
 		String major = scriptHandler.getString("major : ");
-		String lab = scriptHandler.getString("lab : ");
+		int labCode = scriptHandler.getInteger("lab code : ");
 		
-		Professor professor = new Professor(id, name, contactNum, major, lab);
+		Professor professor = new Professor(id, name, contactNum, major, labCode);
 		
 		return professor;
 	}
@@ -76,11 +66,11 @@ public class ProfessorIOHandler {
 	}
 	
 	public void putProfessor(ProfessorList professorList) {
-		System.out.println("id" + "\t" + "name" + "\t" + "contact num" + "\t" + "major" + "\t" + "lab");
+		System.out.println("id" + "\t" + "name" + "\t" + "contact num" + "\t" + "major" + "\t" + "lab code");
 		
 		for(int i = 0; i < professorList.getCount(); i++) {
 			System.out.println(professorList.getProfessorList(i).getId() + "\t" + professorList.getProfessorList(i).getName() + "\t" + professorList.getProfessorList(i).getContactNum()
-					+ "\t" + "\t" + professorList.getProfessorList(i).getMajor() + "\t" + professorList.getProfessorList(i).getLab());
+					+ "\t" + "\t" + professorList.getProfessorList(i).getMajor() + "\t" + professorList.getProfessorList(i).getLabCode());
 		}
 	}
  }
