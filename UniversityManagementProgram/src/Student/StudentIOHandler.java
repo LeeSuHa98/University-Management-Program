@@ -4,8 +4,8 @@ import ScriptHandler.*;
 
 public class StudentIOHandler {
 	ScriptHandler scriptHandler = new ScriptHandler();
-	
-	public Student getStudent() {
+
+	public Student getStudent(StudentList studentList) {
 		int id = scriptHandler.getInteger("id : ");
 		String name = scriptHandler.getString("name : ");
 		int age = scriptHandler.getInteger("age : ");
@@ -15,7 +15,7 @@ public class StudentIOHandler {
 
 		return student;
 	}
-
+	
 	public int getStudentMenu() {
 		int menu = 0;
 
@@ -66,6 +66,7 @@ public class StudentIOHandler {
 		return id;
 	}
 
+	
 	// 학생 값 넘기기
 	public void putStudent(StudentList studentList) {
 		System.out.println("id" + "\t" + "name" + "\t" + "age" + "\t" + "major");

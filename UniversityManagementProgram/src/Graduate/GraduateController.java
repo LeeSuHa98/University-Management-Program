@@ -42,4 +42,12 @@ public class GraduateController {
 	public void selectGraduate(GraduateList graduateList, GraduateIOHandler graduateIOH) {
 		graduateIOH.putGraduate(graduateList);
 	}
+
+	public void showGraduateListInLabRoom(GraduateList graduateList, GraduateIOHandler graduateIOH){
+		int labCode = graduateIOH.getLabCode();
+
+		graduateIOH.putGraduateListInLabRoom(graduateList, labCode);
+	}
+		
 }
+

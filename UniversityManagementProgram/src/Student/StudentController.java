@@ -2,7 +2,7 @@ package Student;
 
 public class StudentController {
 	public void registerStudent(Student student, StudentIOHandler ioh, StudentList studentList) {
-		student = ioh.getStudent();
+		student = ioh.getStudent(studentList);
 
 		studentList.insertStudent(student);
 		
@@ -10,7 +10,7 @@ public class StudentController {
 			boolean dialog = ioh.getDialogMenu();
 			
 			if(dialog == true) {
-				student = ioh.getStudent();
+				student = ioh.getStudent(studentList);
 
 				studentList.insertStudent(student);
 			}
@@ -28,7 +28,7 @@ public class StudentController {
 		int id = ioh.getId();
 
 		int index = studentList.findStudent(id);
-		student = ioh.getStudent();
+		student = ioh.getStudent(studentList);
 
 		studentList.updateStudent(student, index);
 	}

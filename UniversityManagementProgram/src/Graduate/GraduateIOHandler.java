@@ -65,12 +65,33 @@ public class GraduateIOHandler {
 
 		return id;
 	}
+
+	//labcode가 일치하는지 확인하는 함수
+	public int getLabCode(){
+		int labCode = scriptHandler.getInteger("연구실 코드를 입력해 주세요 : ");
+
+		return labCode;
+	}
 	
 	public void putGraduate(GraduateList graduateList) {
 		System.out.println("id" + "\t" + "name" + "\t" + "age" + "\t" + "major" + "\t" + "lab code");
 		for(int i = 0; i < graduateList.getCount(); i++) {
 			System.out.println(graduateList.getGraduateList(i).getId() + "\t" + graduateList.getGraduateList(i).getName() + "\t" 
 		+ graduateList.getGraduateList(i).getAge() + "\t" + graduateList.getGraduateList(i).getMajor() + "\t" + graduateList.getGraduateList(i).getLabCode());
+		}
+	}
+
+	//연구실에 속한 대학원생 리스트 출력
+	//labcode가 일치해야함
+	public void putGraduateListInLabRoom(GraduateList graduateList, int labCode){
+		System.out.println(labCode + "연구실에 속한 대학원생 리스트 정보");
+		System.out.println("id" + "\t" + "name" + "\t" + "age" + "\t" + "major");
+		
+		for(int i = 0; i < graduateList.getCount(); i++){
+			if(labCode == graduateList.getGraduateList(i).getLabCode()){
+				System.out.println(graduateList.getGraduateList(i).getId() + "\t" + graduateList.getGraduateList(i).getName() + "\t" 
+				+ graduateList.getGraduateList(i).getAge() + "\t" + graduateList.getGraduateList(i).getMajor());
+			}
 		}
 	}
 }

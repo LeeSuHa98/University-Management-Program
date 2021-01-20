@@ -22,12 +22,13 @@ public class LabRoomIOHandler {
     public int getLabRoomMenu() {
         int menu = 0;
 
-        System.out.println("----연구실 관리----");
+        System.out.println("-------연구실 관리-------");
         System.out.println("1. 연구실 등록");
         System.out.println("2. 연구실 수정");
         System.out.println("3. 연구실 삭제");
         System.out.println("4. 연구실 조회");
-        System.out.println("5. 종료");
+        System.out.println("5. 해당 연구실 대학원생 조회");
+        System.out.println("6. 종료");
 
         menu = scriptHandler.getInteger("");
 

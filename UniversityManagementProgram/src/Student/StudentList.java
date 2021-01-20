@@ -7,7 +7,7 @@ public class StudentList {
 	private int count;
 
 	public StudentList() {
-		count = 0;
+		this.count = 0;
 	}
 
 	public Student getStudentList(int index) {
@@ -15,7 +15,7 @@ public class StudentList {
 	}
 
 	public int getCount() {
-		return this.count;
+		return count;
 	}
 
 	// 특정 학생 찾는 함수

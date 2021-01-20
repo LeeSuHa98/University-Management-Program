@@ -246,6 +246,9 @@ public class Main {
 							labRoomController.selectLabRoom(labRoomList, labRoomIOH);
 							break;
 						case 5:
+							graduateController.showGraduateListInLabRoom(graduateList, graduateIOH);
+							break;
+						case 6:
 							boolean dialog = staffIOH.getExitDialogMenu();
 
 							if (dialog == true) {
